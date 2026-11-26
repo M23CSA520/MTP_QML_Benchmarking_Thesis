@@ -1,11 +1,10 @@
 # Syndrome Decoding and Error Mitigation with Hybrid Quantum–Classical Machine Learning: Coverage, Cost and Robustness
 
 M.Tech thesis, Department of Computer Science and Engineering, Indian Institute of Technology Jodhpur.
-<<<<<<< HEAD
-Author: Niket Agarwal (M23CSA520). Supervisor: Dr. Subhashish Banerjee.
-=======
-Author: Niket Agrawal (M23CSA520). Supervisor: Dr. Subhashish Banerjee.
->>>>>>> 1d24f97e5c66fd04cfa2ee3c2ca33519305120c1
+
+Author: Niket Agrawal (M23CSA520). 
+
+Supervisor: Dr. Subhashish Banerjee
 
 This repository holds the complete thesis: the LaTeX source, the compiled PDF, every analysis script, the generated datasets and the result tables quoted in the text. Every number in the thesis is traceable to a file in `results/`.
 
