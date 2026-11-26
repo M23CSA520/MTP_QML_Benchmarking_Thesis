@@ -1,0 +1,60 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%---Abstract---%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\thispagestyle{plain}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\begin{center}
+\huge{\textbf{Abstract}}
+\end{center}
+\vspace{0.3cm}
+
+Hybrid quantum--classical machine-learning models are increasingly proposed for
+syndrome decoding and quantum error mitigation, but the evidence for them rests on
+inconsistent baselines, quantum cost that is rarely normalized against accuracy, and
+little testing outside the training distribution. This thesis benchmarks both tasks
+under one protocol and organizes the findings around three questions: whether test
+inputs are \emph{covered} by the training data, what each method \emph{costs}, and
+whether its results are \emph{robust} to the split, seed, noise model and calibration.
+
+In decoding, six decoders -- two matching, three classical learned and one hybrid
+variational -- are compared on $16$ million repetition-code shots. Exact
+minimum-weight perfect matching wins $33$ of $40$ configurations. Learned decoders
+win only at distance $3$, where training covers $94.5\%$ of the syndrome space; at
+distance $9$ it covers $1.65 \times 10^{-19}$, and they are $10$--$30\times$ worse.
+The hybrid decoder beats its classical control on identical features at distance $3$
+but not at distance $9$, and the neural decoder is about $740\times$ faster than a
+pure-Python matching implementation.
+
+Mitigation is posed as regression from noise-scaled expectation values to the ideal
+value, on $4500$ circuit--observable pairs. Nine methods -- no mitigation, three
+zero-noise-extrapolation variants, three classical regressors, a fidelity quantum
+kernel and a data-reuploading variational circuit -- are compared on circuit-grouped
+folds with paired bootstrap tests, over ten splits and ten seeds, under an idealized
+Markovian model and a device-realistic model with verified non-Markovian memory
+($\mathcal{N} = 0.88$, and $0$ under a reset control). In-distribution, the
+three strongest learned methods (RMSE $0.0412$--$0.0436$) remove $41$--$44\%$ of the
+error left by the best extrapolation ($0.0737$) in every split.
+
+\emph{Coverage} decides out-of-distribution behaviour: on deeper circuits the neural
+and quantum models are worse than no mitigation because depth and gate count leave
+the training range, and without those inputs every learned method beats no
+mitigation. \emph{Cost} separates models that tie on accuracy: the quantum kernel
+ties a classical network ($0.0425 \pm 0.0012$ against $0.0426 \pm 0.0009$), but
+estimated from shots it needs about $3 \times 10^8$ circuit executions per mitigated
+value to approach that accuracy. \emph{Robustness} checks change the picture:
+untuned bandwidth makes the kernel $47\%$ worse than no mitigation, the variational
+model's error ranges from $0.056$ to $0.151$ across seeds, unitary folding halves the
+kernel's margin over extrapolation ($38\%$ to $18\%$), memory worsens every
+non-variational learned method but not extrapolation, and a $30\%$ recalibration
+costs most learned methods no resolvable accuracy.
+
+In both tasks, whether a learned method helps depends not on whether it is quantum,
+but on coverage, cost, tuning and repeated initialisation. All results are simulated;
+the decoding track uses the repetition code in place of the surface code and a single
+training seed per decoder.
+
+\vspace{0.4cm}
+\noindent\textbf{Keywords:} syndrome decoding, minimum-weight perfect matching,
+quantum error correction, quantum error mitigation, quantum machine learning,
+zero-noise extrapolation, quantum kernel methods, variational quantum circuits,
+non-Markovian noise, benchmarking.
